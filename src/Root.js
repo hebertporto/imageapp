@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Provider } from 'react-redux';
+import Navigator from './modules/navigator/components/Navigator';
+import configureStore from './store/configureStore';
+
+const store = configureStore({});
 
 export default class Root extends Component {
 
   render() {
     return (
-      <View>
-        <Text>
-          Texto no Root!
-        </Text>
-      </View>
+      <Provider store={store}>
+        <Navigator />
+      </Provider>
     );
   }
 }
