@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 export default class Root extends Component {
 
-  render(){
+  render() {
     return (
       <View>
         <Text>
@@ -12,5 +12,4 @@ export default class Root extends Component {
       </View>
     );
   }
-
 }
