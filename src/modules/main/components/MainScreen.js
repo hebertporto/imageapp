@@ -9,12 +9,15 @@ import * as actions from './../actions/index';
 
 class MainScreen extends Component {
   static route = {
-    navigationBar: {
-      visible: false,
-    },
     styles: {
       gestures: null,
     }
+  }
+
+  async componentWillMount() {
+    const { mainActions } = this.props;
+    await mainActions.sayHello();
+    console.log('construcor ! ');
   }
 
   render() {

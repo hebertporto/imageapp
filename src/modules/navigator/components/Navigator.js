@@ -1,5 +1,5 @@
-import React, { Component, Proptypes } from 'react';
-import { Platform, StatusBar, Modal, View, TouchableWithoutFeedback } from 'react-native';
+import React, { Component } from 'react';
+import { StatusBar } from 'react-native';
 
 import { NavigationProvider, StackNavigation } from '@expo/ex-navigation';
 
