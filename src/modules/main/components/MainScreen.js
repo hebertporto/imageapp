@@ -35,13 +35,18 @@ class MainScreen extends Component {
       <View>
         <Text>{msg}</Text>
         <Button
-          title="ok"
+          title="PhotoScreen"
           onPress={() => {
             this.props.navigator.push('photo');
           }}
-        >
-          Navigate to a profile
-        </Button>
+        />
+        <View style={{ margin: 5 }} />
+        <Button
+          title="Gallery"
+          onPress={() => {
+            this.props.navigator.push('gallery');
+          }}
+        />
       </View>
     );
   }

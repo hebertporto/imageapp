@@ -32,6 +32,7 @@ class PhotoScreen extends Component {
   }
 
   render() {
+    const { msg } = this.state;
     return (
       <View style={styles.container}>
         <Camera
@@ -44,7 +45,7 @@ class PhotoScreen extends Component {
           <Text
             style={styles.capture}
             onPress={this.takePicture}
-          > [CAPTURE] aaa </Text>
+          > {msg} </Text>
         </Camera>
       </View>
     );
@@ -61,7 +62,11 @@ class PhotoScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.1,
+    flexDirection: 'row',
+  },
+  container2: {
+    flex: 0.2,
     flexDirection: 'row',
   },
   preview: {
