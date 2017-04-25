@@ -30,8 +30,8 @@ class GalleryScreen extends Component {
   renderDogs(msg){
     console.log('dogs', msg);
     msg.forEach((dog) => {
-      console.log('dog', dog);
-      return (<Text> - {dog.name}</Text>);
+      console.log('dog', dog.name);
+      return ({dog.name});
     });
   }
   render() {
@@ -39,7 +39,9 @@ class GalleryScreen extends Component {
     return (
       <View>
         <Text>Galeria de Fotos aqui</Text>
-        {this.renderDogs(msg)}
+        <Text>
+          {this.renderDogs(msg)}
+        </Text>
       </View>
     );
   }
