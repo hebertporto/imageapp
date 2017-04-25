@@ -15,24 +15,31 @@ class GalleryScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      msg: 'Criado no State'
+      msg: []
     };
+    this.renderDogs = this.renderDogs.bind(this);
   }
 
   async componentWillMount() {
     const { galleryActions } = this.props;
     await galleryActions.sayHello();
     await this.setState({
-      msg: this.props.galleryState.msg.hello
+      msg: this.props.galleryState.msg
     });
   }
-
+  renderDogs(msg){
+    console.log('dogs', msg);
+    msg.forEach((dog) => {
+      console.log('dog', dog);
+      return (<Text> - {dog.name}</Text>);
+    });
+  }
   render() {
     const { msg } = this.state;
     return (
       <View>
         <Text>Galeria de Fotos aqui</Text>
-        <Text>{msg}</Text>
+        {this.renderDogs(msg)}
       </View>
     );
   }

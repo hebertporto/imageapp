@@ -15,7 +15,6 @@ export function sayHello() {
     //  });
 
     let dogs = await Array.from(realm.objects('Dog'));
-    console.log('dogs', dogs);
     const msg = { hello: 'Eu vim da Action' };
     dispatch(hello(dogs));
   };
