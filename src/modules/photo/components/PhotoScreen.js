@@ -54,7 +54,15 @@ class PhotoScreen extends Component {
   takePicture() {
     const options = {};
     this.camera.capture({ metadata: options })
-      .then(data => console.log('data foto', data))
+      .then((data) => {
+        const url = data.path;
+        const date = new Date();
+        const day = date.getDay();
+        const hour = date.getHours();
+        const { photoActions } = this.props;
+        photoActions.savePhoto({ url, day, hour });
+        console.log('data foto', data);
+      })
       .catch(err => console.error('error foto', err));
   }
 
@@ -62,11 +70,7 @@ class PhotoScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.1,
-    flexDirection: 'row',
-  },
-  container2: {
-    flex: 0.2,
+    flex: 1,
     flexDirection: 'row',
   },
   preview: {
