@@ -1,42 +1,42 @@
 const date = new Date();
 const hour = date.getHours().toString();
-const min  = date.getMinutes().toString();
-const day  = date.getDay().toString();
+const min = date.getMinutes().toString();
+const day = date.getDay().toString();
 
-const horaInit = hour+min;
+const horaInit = hour + min;
 // console.log('min_lenght', min.length);
 // console.log('data', horaInit);
 // console.log('dia da semana', day);
 
 const curso = {
-    '1': [
-      {
-        'horario': '1600-1930',
-        'curso': 'Sistemas'
-      },
-      {
-        'horario': '2000-2230',
-        'curso': 'Banco de Dados'
-      }
-    ],
-    '2': [
-      {
-        'horario': '2000-2230',
-        'curso': 'Sistemas2'
-      },
-    ]
-  };
+  1: [
+    {
+      horario: '1600-1930',
+      curso: 'Sistemas'
+    },
+    {
+      horario: '2000-2230',
+      curso: 'Banco de Dados'
+    }
+  ],
+  2: [
+    {
+      horario: '2000-2230',
+      curso: 'Sistemas2'
+    },
+  ]
+};
 
 
 const diaDoCurso = 1;
 const novoCurso = {
-    'horario': '2300-2330',
-    'curso': 'Web 1'
+  horario: '2300-2330',
+  curso: 'Web 1'
 };
 const inicio = '2231';
 const fim = '2300';
 
-function adicionarCurso (horaInicio, horaFim, dia, novoCurso, curso) {
+function adicionarCurso(horaInicio, horaFim, dia, novoCurso, curso) {
   var disponibilidade = true;
   curso[dia].forEach((item) => {
     const hours = item.horario.split('-');
