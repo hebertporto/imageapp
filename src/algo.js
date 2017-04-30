@@ -27,6 +27,37 @@ const curso = {
   ]
 };
 
+const galley = [
+  1: [
+    {
+      class: 'Web',
+      pictures: [
+        {
+          date: '8/05/2017',
+          url:'Image 1'
+        },
+        {
+          date: '8/05/2017',
+          url:'Image 2'
+        },
+        {
+          date: '23/05/2017',
+          url:'Image 3'
+        }
+      ]
+    },
+    {
+      class: 'Banco de Dados',
+      pictures: [
+        {
+          date: '15/05/2017',
+          url:'Image 1'
+        }
+      ]
+    }
+  ]
+];
+
 
 const diaDoCurso = 1;
 const novoCurso = {

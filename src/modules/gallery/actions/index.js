@@ -1,21 +1,15 @@
-import Realm from 'realm';
+import _ from 'lodash';
 import { HELLO } from './types';
-
-const realm = new Realm({
-      schema: [
-        { name: 'Galeria',
-          properties: {
-            url: 'string'
-          } }
-      ]
-    });
+import { gallery } from './../../../models/Gallery';
 
 export function sayHello() {
   return async (dispatch) => {
-    const photo = await Array.from(realm.objects('Galeria'));
-    const msg = { hello: photo[0].url };
-    console.log('msg action gallery', msg);
-    dispatch(hello(msg));
+    const photo = await Array.from(gallery.objects('Galeria'));
+    const ok = await _.groupBy(photo, 'date');
+    const msg = photo;
+    console.log('query original', photo);
+    console.log('query group by', ok);
+    dispatch(hello(ok));
   };
 }
 

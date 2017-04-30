@@ -1,5 +1,5 @@
-import Realm from 'realm';
 import { HELLO, CONFIRM_SAVE_PHOTO } from './types';
+import { gallery } from './../../../models/Gallery';
 
 export function sayHello() {
   return (dispatch) => {
@@ -10,20 +10,14 @@ export function sayHello() {
 
 export function savePhoto({ url }) {
   return async (dispatch) => {
-    const realm = new Realm({
-      schema: [
-        { name: 'Galeria',
-          properties: {
-            url: 'string'
-          } }
-      ]
+    const name = 'Web';
+    const date = '02/06/2017';
+
+    await gallery.write(() => {
+      gallery.create('Galeria', { name, date, url });
     });
 
-    await realm.write(() => {
-      realm.create('Galeria', { url });
-    });
-
-    const photo = await Array.from(realm.objects('Galeria'));
+    const photo = await Array.from(gallery.objects('Galeria'));
     console.log('resultado de photo', photo);
     dispatch(responseSavePhoto(photo));
   };
