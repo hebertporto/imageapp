@@ -34,7 +34,7 @@ class CreateClassScreen extends Component {
   }
   onSubmit() {
     const { horaInicio, horaFim, diaSemana, nomeAula } = this.state;
-    if( horaInicio && horaFim && diaSemana && nomeAula) {
+    if (horaInicio && horaFim && diaSemana && nomeAula) {
       const { createClassActions } = this.props;
       createClassActions.saveClass({ horaInicio, horaFim, diaSemana, nomeAula });
 

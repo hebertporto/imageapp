@@ -68,7 +68,7 @@ const inicio = '2231';
 const fim = '2300';
 
 function adicionarCurso(horaInicio, horaFim, dia, novoCurso, curso) {
-  var disponibilidade = true;
+  let disponibilidade = true;
   curso[dia].forEach((item) => {
     const hours = item.horario.split('-');
     if (parseInt(horaInicio) >= parseInt(hours[0]) && parseInt(horaInicio) <= parseInt(hours[1])) {
