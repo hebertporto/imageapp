@@ -1,4 +1,4 @@
-import { HELLO } from './types';
+import { HELLO, SAVE_CLASS } from './types';
 
 
 export function sayHello() {
@@ -8,9 +8,23 @@ export function sayHello() {
   };
 }
 
+export function saveClass({horaInicio, horaFim, diaSemana, nome}) {
+  return (dispatch) => {
+    const msg = { hello: 'Eu vim da Action Class' };
+    dispatch(save(msg));
+  };
+}
+
 export function hello(payload) {
   return {
     type: HELLO,
+    payload
+  };
+}
+
+export function save(payload) {
+  return {
+    type: SAVE_CLASS,
     payload
   };
 }
