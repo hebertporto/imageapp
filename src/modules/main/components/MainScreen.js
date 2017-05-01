@@ -47,6 +47,13 @@ class MainScreen extends Component {
             this.props.navigator.push('gallery');
           }}
         />
+        <View style={{ margin: 5 }} />
+        <Button
+          title="Cadastrar Aula"
+          onPress={() => {
+            this.props.navigator.push('createClass');
+          }}
+        />
       </View>
     );
   }
