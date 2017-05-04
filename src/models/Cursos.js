@@ -1,6 +1,6 @@
 import Realm from 'realm';
 
-export const gallery = new Realm({
+export const cursos = new Realm({
   schema: [
     { name: 'Cursos',
       properties: {

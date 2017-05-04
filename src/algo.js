@@ -91,15 +91,15 @@ function adicionarCurso(horaInicio, horaFim, dia, novoCurso, curso) {
 
 adicionarCurso(inicio, fim, diaDoCurso, novoCurso, curso);
 
-// const dayWeek = 1;
-// const timePicutre = 2301;
-//
-// const res = curso[dayWeek].filter((value) => {
-//   // console.log(value.horario);
-//   const hours = value.horario.split('-');
-//   if (parseInt(timePicutre) > parseInt(hours[0]) && parseInt(timePicutre) < parseInt(hours[1])) {
-//     return value;
-//   }
-// });
-// console.log(res[0].curso);
+const dayWeek = 1;
+const timePicutre = 2301;
+
+const res = curso[dayWeek].filter((value) => {
+  // console.log(value.horario);
+  const hours = value.horario.split('-');
+  if (parseInt(timePicutre) > parseInt(hours[0]) && parseInt(timePicutre) < parseInt(hours[1])) {
+    return value;
+  }
+});
+console.log(res[0].curso);
 

@@ -1,5 +1,5 @@
 import { HELLO, SAVE_CLASS } from './types';
-import { gallery } from './../../../models/Gallery';
+import { cursos } from './../../../models/Cursos';
 
 
 export function sayHello() {
@@ -9,9 +9,28 @@ export function sayHello() {
   };
 }
 
-export function saveClass({horaInicio, horaFim, diaSemana, nome}) {
-  return (dispatch) => {
+export function saveClass({ horaInicio, horaFim, diaSemana, nome }) {
+  return async (dispatch) => {
+    const cursos = await cursos.objects('Cursos').filtered(`dia = "${diaSemana}"`);
+    let disponibilidade = true;
     const msg = { hello: 'Eu vim da Action Class' };
+    await cursos.forEach((item) => {
+      const hours = item.horario.split('-');
+      if (parseInt(horaInicio) >= parseInt(hours[0]) && parseInt(horaInicio) <= parseInt(hours[1])) {
+        disponibilidade = false;
+      }
+      if (parseInt(horaFim) >= parseInt(hours[0]) && parseInt(horaFim) <= parseInt(hours[1])) {
+        disponibilidade = false;
+      }
+    });
+
+    if (disponibilidade) {
+    
+      console.log(' * horario adicionado *');
+    } else {
+      console.log(' * horario ocupado *');
+    }
+
     dispatch(save(msg));
   };
 }
