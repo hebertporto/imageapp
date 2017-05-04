@@ -1,4 +1,5 @@
 import { HELLO, SAVE_CLASS } from './types';
+import { gallery } from './../../../models/Gallery';
 
 
 export function sayHello() {
@@ -27,4 +28,10 @@ export function save(payload) {
     type: SAVE_CLASS,
     payload
   };
+}
+
+export function getCursos(dia) {  
+  // let cursos = await gallery.objects('Galeria');
+  // let cursos = realm.objects('Galeria').filtered(`make = "${dia}"`);
+  // let tanDogs = dogs.filtered('color = "tan" AND name BEGINSWITH "B"');
 }
