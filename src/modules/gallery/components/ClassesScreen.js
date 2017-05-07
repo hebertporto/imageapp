@@ -7,9 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './../actions/index';
 
-import ItemGallery from '../../../components/ItemGallery';
-
-class GalleryScreen extends Component {
+class ClassesScreen extends Component {
   static route = {
     styles: {
       gestures: null,
@@ -20,12 +18,10 @@ class GalleryScreen extends Component {
     this.state = {
       list: [],
       dataSource: new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2,
-        sectionHeaderHasChanged: (s1, s2) => s1 !== s2
+        rowHasChanged: (r1, r2) => r1 !== r2
       })
     };
     this.renderRow = this.renderRow.bind(this);
-    this.renderSectionHeader = this.renderSectionHeader.bind(this);
   }
 
   async componentWillMount() {
@@ -34,20 +30,34 @@ class GalleryScreen extends Component {
     await this.setState({
       list: this.props.galleryState.cursosList
     });
-
+    console.log('state', this.props);
   }
 
   renderRow(item) {
-    return <ItemGallery item={item} />;
+    return <Text>{item.name} - {this.getNameOfDay(item.dia)} - {item.horario} </Text>;
   }
 
-  renderSectionHeader(sectionData, sectionID) {
-    return (
-      <View>
-        <Text>{sectionID}</Text>
-      </View>
-    );
+  getNameOfDay(day) {
+    switch (day) {
+      case '0':
+        return 'Domingo';
+      case '1':
+        return 'Segunda';
+      case '2':
+        return 'Terça';
+      case '3':
+        return 'Quarta';
+      case '4':
+        return 'Quinta';
+      case '5':
+        return 'Sexta';
+      case '6':
+        return 'Sábado';
+      default:
+        return 'Dia não encontrado';
+    }
   }
+
   render() {
     const ds = this.state.dataSource;
     const list = this.state.list;
@@ -55,21 +65,20 @@ class GalleryScreen extends Component {
       <View>
         <ListView
           enableEmptySections
-          dataSource={ds.cloneWithRowsAndSections(list)}
+          dataSource={ds.cloneWithRows(list)}
           renderRow={this.renderRow}
-          renderSectionHeader={this.renderSectionHeader}
         />
       </View>
     );
   }
 }
 
-GalleryScreen.propTypes = {
+ClassesScreen.propTypes = {
   cursosList: PropTypes.array.isRequired,
   galleryState: PropTypes.object
 };
 
-GalleryScreen.defaultProps = {
+ClassesScreen.defaultProps = {
   cursosList: [],
   galleryState: {}
 };
@@ -81,4 +90,4 @@ export default connect(
   dispatch => ({
     galleryActions: bindActionCreators(actions, dispatch) // dá acesso as funções no arquivo INDEX
   })
-)(GalleryScreen);
+)(ClassesScreen);

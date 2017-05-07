@@ -1,3 +1,3 @@
-export function getHello(state, action) {
-  return { ...state, ...{ msg: action.payload } };
+export function fetchCursos(state, action) {
+  return { ...state, ...{ cursosList: action.payload } };
 }

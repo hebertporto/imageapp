@@ -1,20 +1,20 @@
 import _ from 'lodash';
-import { HELLO } from './types';
+import { LIST_AULAS_REGISTRADAS } from './types';
 import { realm } from './../../../models/Models';
 
-export function sayHello() {
+export function fecthCursos() {
   return async (dispatch) => {
-    const photo = await Array.from(realm.objects('Galeria'));
-    const ok = await _.groupBy(photo, 'date');
-    console.log('query original', photo);
-    console.log('query group by', ok);
-    dispatch(hello(ok));
+    const cursos = await Array.from(realm.objects('Cursos'));
+  //  const ok = await _.groupBy(cursos, 'date');
+    console.log('query original', cursos);
+
+    dispatch(sendCursos(cursos));
   };
 }
 
-export function hello(payload) {
+export function sendCursos(payload) {
   return {
-    type: HELLO,
+    type: LIST_AULAS_REGISTRADAS,
     payload
   };
 }

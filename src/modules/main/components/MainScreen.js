@@ -44,7 +44,7 @@ class MainScreen extends Component {
         <Button
           title="Gallery"
           onPress={() => {
-            this.props.navigator.push('gallery');
+            this.props.navigator.push('listClasses');
           }}
         />
         <View style={{ margin: 5 }} />
