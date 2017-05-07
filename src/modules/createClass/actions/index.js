@@ -1,5 +1,5 @@
 import { HELLO, SAVE_CLASS } from './types';
-import { cursos } from './../../../models/Models';
+import { realm } from './../../../models/Models';
 
 
 export function sayHello() {
@@ -9,11 +9,13 @@ export function sayHello() {
   };
 }
 
-export function saveClass({ horaInicio, horaFim, diaSemana, nome }) {
+export function saveClass({ horaInicio, horaFim, diaSemana, nomeAula }) {
+  console.log(horaFim, horaInicio, diaSemana, nomeAula);
   return async (dispatch) => {
-    const cursos = await cursos.objects('Cursos').filtered(`dia = "${diaSemana}"`);
+    const horario = `${horaInicio}-${horaFim}`;
+    const cursos = await realm.objects('Cursos').filtered(`dia = "${diaSemana}"`);
     let disponibilidade = true;
-    const msg = { hello: 'Eu vim da Action Class' };
+
     await cursos.forEach((item) => {
       const hours = item.horario.split('-');
       if (parseInt(horaInicio, 10) >= parseInt(hours[0], 10) && parseInt(horaInicio, 10) <= parseInt(hours[1], 10)) {
@@ -25,12 +27,15 @@ export function saveClass({ horaInicio, horaFim, diaSemana, nome }) {
     });
 
     if (disponibilidade) {
-      console.log(' * horario adicionado *');
+      realm.write(() => {
+        realm.create('Cursos', { name: nomeAula, dia: diaSemana, horario });
+      });
+      alert(' * cadastrado *');
     } else {
-      console.log(' * horario ocupado *');
+      alert(' * horario ocupado *');
     }
 
-    dispatch(save(msg));
+    dispatch(save({ status: 'curso' }));
   };
 }
 

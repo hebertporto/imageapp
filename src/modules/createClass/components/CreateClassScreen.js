@@ -23,6 +23,7 @@ class CreateClassScreen extends Component {
       diaSemana: '',
       nomeAula: ''
     };
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   async componentWillMount() {
@@ -89,7 +90,7 @@ class CreateClassScreen extends Component {
             underlineColorAndroid="transparent"
           />
         </View>
-        <TouchableOpacity style={styles.loginButtonContainer} onPress={() => console.log('State', this.state)}>
+        <TouchableOpacity style={styles.loginButtonContainer} onPress={this.onSubmit}>
           <View style={styles.loginButton}>
             <Text style={styles.loginText}>Cadastrar Aula</Text>
           </View>
