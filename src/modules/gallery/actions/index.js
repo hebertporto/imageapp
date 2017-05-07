@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { HELLO } from './types';
-import { gallery } from './../../../models/Gallery';
+import { gallery } from './../../../models/Models';
 
 export function sayHello() {
   return async (dispatch) => {

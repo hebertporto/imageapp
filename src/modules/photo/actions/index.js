@@ -1,5 +1,5 @@
 import { HELLO, CONFIRM_SAVE_PHOTO } from './types';
-import { gallery } from './../../../models/Gallery';
+import { gallery } from './../../../models/Models';
 
 export function sayHello() {
   return (dispatch) => {

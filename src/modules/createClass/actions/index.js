@@ -1,5 +1,5 @@
 import { HELLO, SAVE_CLASS } from './types';
-import { cursos } from './../../../models/Cursos';
+import { cursos } from './../../../models/Models';
 
 
 export function sayHello() {
@@ -16,16 +16,15 @@ export function saveClass({ horaInicio, horaFim, diaSemana, nome }) {
     const msg = { hello: 'Eu vim da Action Class' };
     await cursos.forEach((item) => {
       const hours = item.horario.split('-');
-      if (parseInt(horaInicio) >= parseInt(hours[0]) && parseInt(horaInicio) <= parseInt(hours[1])) {
+      if (parseInt(horaInicio, 10) >= parseInt(hours[0], 10) && parseInt(horaInicio, 10) <= parseInt(hours[1], 10)) {
         disponibilidade = false;
       }
-      if (parseInt(horaFim) >= parseInt(hours[0]) && parseInt(horaFim) <= parseInt(hours[1])) {
+      if (parseInt(horaFim, 10) >= parseInt(hours[0], 10) && parseInt(horaFim, 10) <= parseInt(hours[1], 10)) {
         disponibilidade = false;
       }
     });
 
     if (disponibilidade) {
-    
       console.log(' * horario adicionado *');
     } else {
       console.log(' * horario ocupado *');
@@ -49,7 +48,7 @@ export function save(payload) {
   };
 }
 
-export function getCursos(dia) {  
+export function getCursos(dia) {
   // let cursos = await gallery.objects('Galeria');
   // let cursos = realm.objects('Galeria').filtered(`make = "${dia}"`);
   // let tanDogs = dogs.filtered('color = "tan" AND name BEGINSWITH "B"');
