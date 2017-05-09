@@ -52,9 +52,3 @@ export function save(payload) {
     payload
   };
 }
-
-export function getCursos(dia) {
-  // let cursos = await gallery.objects('Galeria');
-  // let cursos = realm.objects('Galeria').filtered(`make = "${dia}"`);
-  // let tanDogs = dogs.filtered('color = "tan" AND name BEGINSWITH "B"');
-}
