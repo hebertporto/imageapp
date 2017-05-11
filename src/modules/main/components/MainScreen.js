@@ -30,10 +30,8 @@ class MainScreen extends Component {
   }
 
   render() {
-    const { msg } = this.state;
     return (
       <View>
-        <Text>{msg}</Text>
         <Button
           title="PhotoScreen"
           onPress={() => {
