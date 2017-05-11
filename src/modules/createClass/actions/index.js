@@ -1,4 +1,5 @@
-import { HELLO, SAVE_CLASS } from './types';
+import _ from 'lodash';
+import { HELLO, SAVE_CLASS, FETCH_CURSOS_CADASTRADOS } from './types';
 import { realm } from './../../../models/Models';
 
 
@@ -6,6 +7,13 @@ export function sayHello() {
   return (dispatch) => {
     const msg = { hello: 'Eu vim da Action Class' };
     dispatch(hello(msg));
+  };
+}
+export function fetchHorariosCadastrados() {
+  return async (dispatch) => {
+    const cursos = await Array.from(realm.objects('Cursos'));
+    const cursosAgrupadosPorDiaDaSemana = await _.groupBy(cursos, 'dia');
+    dispatch(sendFetchCursos(cursosAgrupadosPorDiaDaSemana));
   };
 }
 
@@ -36,6 +44,13 @@ export function saveClass({ horaInicio, horaFim, diaSemana, nomeAula }) {
     }
 
     dispatch(save({ status: 'curso' }));
+  };
+}
+
+export function sendFetchCursos(payload) {
+  return{
+    type: FETCH_CURSOS_CADASTRADOS,
+    payload
   };
 }
 

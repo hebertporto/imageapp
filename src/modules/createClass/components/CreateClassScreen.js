@@ -29,6 +29,7 @@ class CreateClassScreen extends Component {
   async componentWillMount() {
     const { createClassActions } = this.props;
     await createClassActions.sayHello();
+    await createClassActions.fetchHorariosCadastrados();
     await this.setState({
       msg: this.props.createClassState.msg.hello
     });
@@ -45,10 +46,9 @@ class CreateClassScreen extends Component {
   }
 
   render() {
-    const { msg, horaInicio, horaFim, diaSemana, nomeAula } = this.state;
+    const { horaInicio, horaFim, diaSemana, nomeAula } = this.state;
     return (
       <View>
-        <Text>{msg}</Text>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.inputText}

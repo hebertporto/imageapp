@@ -1,2 +1,3 @@
 export const LIST_AULAS_REGISTRADAS = 'LIST_AULAS_REGISTRADAS';
 export const GET_PHOTOS = 'GET_PHOTOS';
+
