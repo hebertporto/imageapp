@@ -48,6 +48,7 @@ class GalleryScreen extends Component {
       </View>
     );
   }
+  
   render() {
     const ds = this.state.dataSource;
     const list = this.state.list;
