@@ -15,6 +15,8 @@ import * as actions from './../actions/index';
 
 import { styles } from './../../../styles/createClass/style';
 
+import { getNameOfDay, horarioFormatado } from '../../../config/utils';
+
 class CreateClassScreen extends Component {
   static route = {
     styles: {
@@ -44,7 +46,7 @@ class CreateClassScreen extends Component {
   renderSectionHeader(sectionData, sectionID) {
     return (
       <View>
-        <Text>{this.getNameOfDay(sectionID)}</Text>
+        <Text>{getNameOfDay(sectionID)}</Text>
       </View>
     );
   }
@@ -68,33 +70,12 @@ class CreateClassScreen extends Component {
     }
   }
 
-  getNameOfDay(day) {
-    switch (day) {
-      case '0':
-        return 'Domingo';
-      case '1':
-        return 'Segunda';
-      case '2':
-        return 'Terça';
-      case '3':
-        return 'Quarta';
-      case '4':
-        return 'Quinta';
-      case '5':
-        return 'Sexta';
-      case '6':
-        return 'Sábado';
-      default:
-        return 'Dia não encontrado';
-    }
-  }
-
   renderRow(item) {
-    return <Text>{item.name} - {item.horario} </Text>;
+    return <Text>{item.name} - {horarioFormatado(item.horario)} </Text>;
   }
 
   renderHeader() {
-    const { horaInicio, horaFim, diaSemana, nomeAula } = this.state;
+    const { horaInicio, horaFim, nomeAula } = this.state;
     return (
       <View>
         <View style={styles.inputContainer}>

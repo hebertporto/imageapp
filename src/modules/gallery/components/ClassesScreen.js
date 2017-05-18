@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './../actions/index';
 
+import { getNameOfDay } from '../../../config/utils';
+
 class ClassesScreen extends Component {
   static route = {
     styles: {
@@ -34,28 +36,7 @@ class ClassesScreen extends Component {
   }
 
   renderRow(item) {
-    return <Text>{item.name} - {this.getNameOfDay(item.dia)} - {item.horario} </Text>;
-  }
-
-  getNameOfDay(day) {
-    switch (day) {
-      case '0':
-        return 'Domingo';
-      case '1':
-        return 'Segunda';
-      case '2':
-        return 'Terça';
-      case '3':
-        return 'Quarta';
-      case '4':
-        return 'Quinta';
-      case '5':
-        return 'Sexta';
-      case '6':
-        return 'Sábado';
-      default:
-        return 'Dia não encontrado';
-    }
+    return <Text>{item.name} - {getNameOfDay(item.dia)} - {item.horario} </Text>;
   }
 
   render() {
