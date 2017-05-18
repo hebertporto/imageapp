@@ -123,13 +123,13 @@ class CreateClassScreen extends Component {
             selectedValue={this.state.language}
             onValueChange={diaSemana => this.setState({ diaSemana })}
           >
-            <Picker.Item label="Segunda" value="1" />
-            <Picker.Item label="Terça" value="2" />
-            <Picker.Item label="Quarta" value="3" />
-            <Picker.Item label="Quinta" value="4" />
-            <Picker.Item label="Sexta" value="5" />
-            <Picker.Item label="Sábado" value="6" />
-            <Picker.Item label="Domingo" value="7" />
+            <Picker.Item label="Segunda" value="2" />
+            <Picker.Item label="Terça" value="3" />
+            <Picker.Item label="Quarta" value="4" />
+            <Picker.Item label="Quinta" value="5" />
+            <Picker.Item label="Sexta" value="6" />
+            <Picker.Item label="Sábado" value="7" />
+            <Picker.Item label="Domingo" value="1" />
           </Picker>
         </View>
         <View style={styles.inputContainer}>
