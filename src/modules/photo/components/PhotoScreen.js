@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
+import Camera from 'react-native-camera';
+
 import { View, Text, StyleSheet } from 'react-native';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './../actions/index';
 
-import Camera from 'react-native-camera';
 
 
 class PhotoScreen extends Component {

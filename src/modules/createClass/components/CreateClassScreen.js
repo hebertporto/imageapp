@@ -101,7 +101,7 @@ class CreateClassScreen extends Component {
         </View>
         <View style={styles.inputContainer}>
           <Picker
-            selectedValue={this.state.language}
+            selectedValue={this.state.diaSemana}
             onValueChange={diaSemana => this.setState({ diaSemana })}
           >
             <Picker.Item label="Segunda" value="2" />

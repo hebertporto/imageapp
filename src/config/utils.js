@@ -1,19 +1,19 @@
 
 export function getNameOfDay(day) {
   switch (day) {
-    case '0':
-      return 'Domingo';
     case '1':
-      return 'Segunda';
+      return 'Domingo';
     case '2':
-      return 'Terça';
+      return 'Segunda';
     case '3':
-      return 'Quarta';
+      return 'Terça';
     case '4':
-      return 'Quinta';
+      return 'Quarta';
     case '5':
-      return 'Sexta';
+      return 'Quinta';
     case '6':
+      return 'Sexta';
+    case '7':
       return 'Sábado';
     default:
       return 'Dia não encontrado';
