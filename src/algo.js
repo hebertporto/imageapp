@@ -4,9 +4,6 @@ const min = date.getMinutes().toString();
 const day = date.getDay().toString();
 
 const horaInit = hour + min;
-// console.log('min_lenght', min.length);
-// console.log('data', horaInit);
-// console.log('dia da semana', day);
 
 
 const diaDoCurso = 1;
