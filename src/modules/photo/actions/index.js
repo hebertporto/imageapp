@@ -14,30 +14,28 @@ export function savePhoto({ url }) {
     const diaSemana = date.getDay();
     const hour = date.getHours();
     const minutes = date.getMinutes();
-    const dateFoto = `${date.getDay()}/${date.getMonth()}/${date.getYear()}`;
+    const dateFoto = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
     const horaFoto = `${hour}${minutes}`;
     let name = 'Categoria Geral';
-    let foundCurso = false;
+    console.log('data cadastrada', dateFoto);
+    console.log('dia Semana', diaSemana);
 
-    const cursos = await realm.objects('Cursos').filtered(`dia = "${diaSemana}"`);
-
+    const cursos = await Array.from(realm.objects('Cursos').filtered(`dia = "${diaSemana}"`));
+    const todosCursos = await Array.from(realm.objects('Cursos'));
+    console.log('cursos', cursos);
+    console.log('todos os cursos', todosCursos);
     cursos.forEach((item) => {
       const hours = item.horario.split('-');
+      console.log('hora incial', parseInt(hours[0], 10), 'hora final', parseInt(hours[1], 10), 'hora Foto', parseInt(horaFoto, 10));
       if (parseInt(horaFoto, 10) >= parseInt(hours[0], 10) && parseInt(horaFoto, 10) <= parseInt(hours[1], 10)) {
-        foundCurso = true;
         name = item.name;
       }
     });
 
-    if (foundCurso) {
-      await realm.write(() => {
-        realm.create('Galeria', { name, dateFoto, url });
-      });
-    } else {
-      await realm.write(() => {
-        realm.create('Galeria', { name, dateFoto, url });
-      });
-    }
+    await realm.write(() => {
+      realm.create('Galeria', { name, date: dateFoto, url });
+    });
+
 
     const photo = await Array.from(realm.objects('Galeria'));
     console.log('resultado de photo', photo);

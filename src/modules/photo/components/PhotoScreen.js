@@ -35,18 +35,14 @@ class PhotoScreen extends Component {
   render() {
     const { msg } = this.state;
     return (
-      <View style={styles.container}>
+     <View style={styles.container}>
         <Camera
           ref={(cam) => {
             this.camera = cam;
           }}
           style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}
-        >
-          <Text
-            style={styles.capture}
-            onPress={this.takePicture}
-          > {msg} </Text>
+          aspect={Camera.constants.Aspect.fill}>
+          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
         </Camera>
       </View>
     );
@@ -62,7 +58,6 @@ class PhotoScreen extends Component {
         const hour = date.getHours();
         const { photoActions } = this.props;
         photoActions.savePhoto({ url, day, hour });
-        console.log('data foto', data);
       })
       .catch(err => console.error('error foto', err));
   }
