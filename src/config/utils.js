@@ -25,7 +25,7 @@ export function horarioFormatado(horario) {
     const hours = horario.split('-');
     const inicio = hours[0].match(/.{1,2}/g);
     const fim = hours[1].match(/.{1,2}/g);
-    const horarioFormatado = `${inicio[0]}h${inicio[0]} às ${fim[0]}h${fim[1]}`;
+    const horarioFormatado = `${inicio[0]}h${inicio[1]} às ${fim[0]}h${fim[1]}`;
 
     return horarioFormatado;
   }

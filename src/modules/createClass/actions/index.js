@@ -12,15 +12,12 @@ export function sayHello() {
 export function fetchHorariosCadastrados() {
   return async (dispatch) => {
     const cursos = await Array.from(realm.objects('Cursos'));
-    console.log('cursos', cursos);
     const cursosAgrupadosPorDiaDaSemana = await _.groupBy(cursos, 'dia');
-    console.log('cursosAgrupados', cursosAgrupadosPorDiaDaSemana);
     dispatch(sendFetchCursos(cursosAgrupadosPorDiaDaSemana));
   };
 }
 
 export function saveClass({ horaInicio, horaFim, diaSemana, nomeAula }) {
-  console.log(horaFim, horaInicio, diaSemana, nomeAula);
   return async (dispatch) => {
     const horario = `${horaInicio}-${horaFim}`;
     const cursos = await realm.objects('Cursos').filtered(`dia = "${diaSemana}"`);
