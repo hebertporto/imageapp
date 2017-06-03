@@ -26,10 +26,7 @@ class PhotoScreen extends Component {
 
   async componentWillMount() {
     const { photoActions } = this.props;
-    await photoActions.sayHello();
-    await this.setState({
-      msg: this.props.photoState.msg.hello
-    });
+
   }
 
   render() {

@@ -13,4 +13,3 @@ export default combineReducers({
   createClass,
   navigation: NavigationReducer
 });
-
