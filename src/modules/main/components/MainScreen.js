@@ -14,21 +14,6 @@ class MainScreen extends Component {
       gestures: null,
     }
   }
-  constructor(props) {
-    super(props);
-    this.state = {
-      msg: 'Criado no State'
-    };
-  }
-
-  async componentWillMount() {
-    const { mainActions } = this.props;
-    await mainActions.sayHello();
-    await this.setState({
-      msg: this.props.mainState.msg.hello
-    });
-  }
-
   render() {
     return (
       <View>
