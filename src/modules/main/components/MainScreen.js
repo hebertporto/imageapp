@@ -14,6 +14,10 @@ class MainScreen extends Component {
       gestures: null,
     }
   }
+  componentWillUnmount() {
+    console.log('Unmount MainScreen');
+  }
+
   render() {
     return (
       <View>

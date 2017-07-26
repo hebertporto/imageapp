@@ -23,6 +23,11 @@ class CreateClassScreen extends Component {
       gestures: null,
     }
   }
+
+  componentWillUnmount() {
+    console.log('Unmount CreateClassScreen');
+  }
+
   constructor(props) {
     super(props);
     this.state = {

@@ -8,7 +8,7 @@ function configureStore(initialState) {
   const enhancer = compose(
     applyMiddleware(
       thunk,
-      Logger
+      // Logger
     )
   );
 
